@@ -29,7 +29,7 @@ public class Transpile extends AbstractMojo {
     @Parameter(defaultValue = "x64", property="node.architecture", required=true)
     private String nodeArchitecture;
 
-    @Parameter(defaultValue = "latest", property="haxeVersion", required = true)
+    @Parameter(defaultValue = "stable", property="haxeVersion", required = true)
     private String haxeVersion;
 
     @Parameter(property = "hxmlFile")
