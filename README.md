@@ -1,9 +1,9 @@
 # haxe-maven-plugin
-Maven plugin to transpile haxe sources and ouput them for later consumption. 
+Maven plugin to transpile haxe sources and output them for later consumption. 
 
 Often in complex projects it would be nice to insert Haxe. A perfect example of this is JavaScript. Using Haxe as a JavaScript replacement is a great way to write cleaner (type safe) code.
 
-However, including these generated files into a project is at best ill advised and at worst not allowed (especially in corporate environments). Alot of corporate build system as dependency resolutions are based on Maven. It is also very common that a build machine does no have Haxe installed.
+However, including these generated files into a project is at best ill advised and at worst not allowed (especially in corporate environments). A lot of corporate build systems use Maven for dependency resolution and automated builds. It is also very common that a build machine does no have Haxe installed.
 
 This plugin address that by:
 
