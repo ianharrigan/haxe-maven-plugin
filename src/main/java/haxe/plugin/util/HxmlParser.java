@@ -52,6 +52,9 @@ public class HxmlParser {
     }
 
     public void addClassPaths(List<String> paths) {
+        if (paths == null) {
+            return;
+        }
         for (String path : paths) {
             if (hasClassPath(path) == false) {
                 HxmlParam param = new HxmlParam();
@@ -82,6 +85,9 @@ public class HxmlParser {
     }
 
     public void addHaxelibs(List<String> libs) {
+        if (libs == null) {
+            return;
+        }
         for (String lib : libs) {
             if (hasHaxelib(lib) == false) {
                 HxmlParam param = new HxmlParam();

@@ -141,7 +141,7 @@ public class Transpile extends AbstractMojo {
         lix("scope create");
         lix("install haxe " + haxeVersion);
         lix("use haxe " + haxeVersion);
-        haxe("--version");
+        haxe("-version");
     }
 
     private void installLix() throws Exception {
