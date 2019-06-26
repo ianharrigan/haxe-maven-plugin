@@ -29,8 +29,6 @@ public class Transpile extends AbstractMojo {
     @Parameter(defaultValue = "x64", property="node.architecture", required=true)
     private String nodeArchitecture;
 
-    //private String sourceDir = "C:\\Temp\\haxe_node_maven_test\\src";
-
     @Parameter(defaultValue = "latest", property="haxeVersion", required = true)
     private String haxeVersion;
 
