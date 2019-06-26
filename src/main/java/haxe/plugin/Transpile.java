@@ -316,6 +316,11 @@ public class Transpile extends AbstractMojo {
     }
 
     public void unzip(File zipFile, String outputFolder) throws Exception {
+        if (SystemUtils.IS_OS_LINUX) {
+            exec("tar xJvf " + zipFile.getName(), new File(outputFolder).getParentFile());
+            return;
+        }
+
         byte[] buffer = new byte[1024];
         try {
             //create output directory is not exists
