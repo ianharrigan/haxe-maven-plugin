@@ -201,7 +201,7 @@ public class Transpile extends AbstractMojo {
     private int node(String command) throws Exception {
         File nodeOutputDir = new File(getNodeOutputDir());
         File nodeDir = new File(nodeOutputDir, getNodeFileName());
-        String node = nodeDir + File.separator + "node";
+        String node = nodeDir + File.separator + getNodeOSBinPath("node");
         getLog().info("Using node from: " + nodeDir);
 
         int result = exec(node + " " + command, nodeDir);
@@ -218,7 +218,7 @@ public class Transpile extends AbstractMojo {
         if (dir == null) {
             dir = nodeDir;
         }
-        String npm = nodeDir + File.separator + "npm";
+        String npm = nodeDir + File.separator + getNodeOSBinPath("npm");
         if (SystemUtils.IS_OS_WINDOWS) {
             npm += ".cmd";
         }
@@ -239,7 +239,7 @@ public class Transpile extends AbstractMojo {
             dir = nodeDir;
         }
 
-        String npx = nodeDir + File.separator + "npx";
+        String npx = nodeDir + File.separator + getNodeOSBinPath("npx");
         if (SystemUtils.IS_OS_WINDOWS) {
             npx += ".cmd";
         }
@@ -315,9 +315,18 @@ public class Transpile extends AbstractMojo {
         return null;
     }
 
+    private String getNodeOSBinPath(String exe) {
+        if (SystemUtils.IS_OS_WINDOWS) {
+            return exe;
+        } else if (SystemUtils.IS_OS_LINUX || SystemUtils.IS_OS_MAC) {
+            return "bin" + File.separator + exe;
+        }
+        return null;
+    }
+
     public void unzip(File zipFile, String outputFolder) throws Exception {
         if (SystemUtils.IS_OS_LINUX) {
-            exec("tar xJvf " + zipFile.getName(), new File(outputFolder).getParentFile());
+            exec("tar xJvf node/" + zipFile.getName() + " -C node", new File(outputFolder).getParentFile());
             return;
         }
 
